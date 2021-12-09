@@ -1,7 +1,8 @@
 import './App.css';
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Modal from 'react-modal';
+import Pagination from "react-js-pagination";
 
 import add_icon from './assets/add_icon.png'
 import cancel_icon from './assets/cancel_icon.png'
@@ -30,97 +31,203 @@ function App() {
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
       padding: 0,
-      maxWidth : '400px',
-      width : '400px',
-      maxHeight : "350px",
-      height : "350px",
-      overflow : 'hidden'
+      maxWidth: '400px',
+      width: '400px',
+      maxHeight: "350px",
+      height: "350px",
+      overflow: 'hidden'
     },
   };
 
   // 모달 토글
-  const [modalIsOpen , setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   // 추가 모달 토글
-  const [modalIsOpen2 , setModalIsOpen2] = useState(false);
+  const [modalIsOpen2, setModalIsOpen2] = useState(false);
 
   // key
-  const [key , setKey] = useState(0);
+  const [key, setKey] = useState(0);
+
+  // 페이지 뷰
+  const [pageList, setPageList] = useState([]);
+
+  // 리스트 뷰
+  const [nowList, setNowList] = useState([]);
 
   // 전체 리스트
-  const [list,setList] = useState([]);
+  const [list, setList] = useState([]);
 
   // 진행중인 리스트
-  const [progress_list,setProgress_list] = useState([]);
+  const [progress_list, setProgress_list] = useState([]);
 
   // 진행 완료 된 리스트
-  const [end_list,setEnd_list] = useState([]);
+  const [end_list, setEnd_list] = useState([]);
 
   // 모달에 선택된 데이터
-  const [modalData,setModalData] = useState({});
+  const [modalData, setModalData] = useState({});
+
   // 추가 택스트
-  const [text,setText] = useState('');
+  const [text, setText] = useState('');
 
   // 수정 택스트
-  const [edit_text,setEdit_text] = useState('');
+  const [edit_text, setEdit_text] = useState('');
 
   // 수정 버튼 상태값
-  const [edit_state,setEdit_state] = useState(false);
+  const [edit_state, setEdit_state] = useState(false);
+
+  // 탭 타입
+  const [type, setType] = useState('all');
 
 
+  // 페이징
+  const [activePage, setActivePage] = useState(1);
+
+  // 페이지 클릭 이벤트
+  const handlePageChange = (pageNumber) => {
+    console.log(`active page is ${pageNumber}`);
+    setActivePage(pageNumber);
+    pageFnc(pageNumber,nowList);
+  }
+
+
+
+  const pageFnc = (pageNumber,list) => {
+    let arr = [];
+    let last = pageNumber * 6;
+    let start = pageNumber * 6 - 6
+
+    list.map((item, index) => {
+      if (index < last && index >= start) {
+        arr.push(item)
+      }
+    })
+    setPageList(arr)
+  }
+  
+
+
+  // 탭 클릭 함수
+  const tapClickFnc = (val) => {
+    setType(val);
+    switch (val) {
+      case 'all':
+        setNowList(list);
+        setPageList(list);
+        break;
+      case 'progress':
+        setNowList(progress_list);
+        setPageList(progress_list);
+        break;
+      case 'end':
+        setNowList(end_list);
+        setPageList(end_list);
+        break;
+    }
+  }
 
 
   // 리스트 클릭 이벤트
   const clickFnc = (key) => {
-    // let arr = list.map((x,index2) => ( index == index2 ? {...x,state : !x.state} : {...x}));
-    // setList(arr);
-    let item = list.filter((x) => {return x.key == key})
+
+    let item = list.filter((x) => { return x.key == key })
     setModalData(item[0])
     setModalIsOpen(true)
   }
 
   // 삭제 이벤트
   const deleteFnc = () => {
-    let arr = list.filter((x) => {return x.key != modalData.key})
+    let arr = list.filter((x) => { return x.key != modalData.key })
     setList(arr)
+    setNowList(arr);
     setModalIsOpen(false);
     setEdit_text('');
+    let page = Math.floor(((arr.length-1)/6)+1)
+    console.log(page)
+    pageFnc(page,arr);
+    setActivePage(page)
   }
+
+
 
   // 추가 이벤트
   const addFnc = () => {
-    setList((x) => [...x,{key : key,content : text,state : false}])
-    setKey((x) => x+1)
+    let arr = [...list, { key: key, content: text, state: false }]
+    setList(arr)
+    setNowList(arr);
+    setKey((x) => x + 1)
+    setText('')
     setModalIsOpen2(false)
+    let page = Math.floor((arr.length-1)/6+1)
+    pageFnc(page,arr);
+    setActivePage(page)
+    
   }
+
+  // 진행완료
+  const clearFnc = () => {
+    let arr = list.map((x) => x.key == modalData.key ? { ...x, state: true } : { ...x })
+    setList(arr);
+    setNowList(arr);
+    closeFnc();
+    pageFnc(activePage,arr);
+  }
+
+
+  useEffect(() => {
+    setNowList(list)
+  }, [])
 
   useEffect(() => {
 
-    let trueList = list.filter((x) => {return x.state});
-    let falseList = list.filter((x) => {return !x.state});
+    let trueList = list.filter((x) => { return x.state });
+    let falseList = list.filter((x) => { return !x.state });
 
     setProgress_list(falseList);
     setEnd_list(trueList);
-  },[list])
+
+    // switch (type) {
+    //   case 'all':
+    //     setNowList(list);
+    //     setPageList(list);
+    //     break;
+    //   case 'progress':
+    //     setNowList(falseList);
+    //     setPageList(falseList);
+    //     break;
+    //   case 'end':
+    //     setNowList(trueList);
+    //     setPageList(trueList);
+    //     break;
+    // }
+
+  }, [list])
+
+
+
+
 
   // 리스트 아이템 화면
-  let listView = list.map((item,index) => {
-    return (
-      <li key={index} onClick={() => {clickFnc(item.key);}}>
+  let listView = pageList.map((item, index) => {
+   
+    return  index < 6 ? (
+      <li key={index} onClick={() => { clickFnc(item.key); }}>
         {item.state == false ?
-        <img className="check" src={progress_icon}/> :
-        <img className="check" src={check_icon}/>
-      }
+          <img className="check" src={progress_icon} /> :
+          <img className="check" src={check_icon} />
+        }
         <p>{item.content}</p>
-        <img className="more_btn" src={more_icon}/>
+        <img className="more_btn" src={more_icon} />
       </li>
     )
+    : null
   })
+
 
   const closeFnc = () => {
     setModalIsOpen(false);
     setModalData({});
     setEdit_text('');
+    setEdit_state(false)
   }
 
   const closeFnc2 = () => {
@@ -129,21 +236,26 @@ function App() {
   }
 
   const editFnc = () => {
-    if(edit_state){
+    if (edit_state) {
       setEdit_text('');
       setEdit_state(false);
-    }else{
+    } else {
       setEdit_text(modalData.content);
       setEdit_state(true);
     }
   }
+
+  // 수정
   const editFnc2 = () => {
-    let arr = list.map((x) => x.key == modalData.key ? {...x,content : edit_text} : {...x})
+    let arr = list.map((x) => x.key == modalData.key ? { ...x, content: edit_text } : { ...x })
     setList(arr);
+    setNowList(arr);
     setModalIsOpen(false);
     setEdit_state(false)
     setEdit_text('');
     setModalData({})
+
+    pageFnc(activePage,arr);
   }
 
   return (
@@ -164,7 +276,7 @@ function App() {
             </div>
           </div>
 
-          <img onClick={()=>{setModalIsOpen2(true);}} className="add_btn" src={add_icon}/>
+          <img onClick={() => { setModalIsOpen2(true); }} className="add_btn" src={add_icon} />
         </header>
 
         <section>
@@ -172,19 +284,19 @@ function App() {
           <nav>
             <ul>
               {/* 전체 목록 */}
-              <li>
+              <li onClick={() => { tapClickFnc('all') }}>
                 <img src={list_icon} />
-                <div className="affter_bar"></div>
+                <div style={type == 'all' ? { display: 'block' } : { display: 'none' }} className="affter_bar"></div>
               </li>
               {/* 남은 리스트 */}
-              <li>
+              <li onClick={() => { tapClickFnc('progress') }}>
                 <img src={proceeding_list_icon} />
-                <div className="affter_bar"></div>
+                <div style={type == 'progress' ? { display: 'block' } : { display: 'none' }} className="affter_bar"></div>
               </li>
               {/* 실행 한 리스트 */}
-              <li>
+              <li onClick={() => { tapClickFnc('end') }}>
                 <img src={check_list_icon} />
-                <div className="affter_bar"></div>
+                <div style={type == 'end' ? { display: 'block' } : { display: 'none' }} className="affter_bar"></div>
               </li>
             </ul>
           </nav>
@@ -194,71 +306,87 @@ function App() {
           <ul className="list_view">
             {/* 아이템 */}
             {listView}
+
           </ul>
+
+          <Pagination
+            activePage={activePage}
+            itemsCountPerPage={6}
+            totalItemsCount={nowList.length}
+            pageRangeDisplayed={5}
+            onChange={handlePageChange}
+            firstPageText=""
+            lastPageText=""
+            prevPageText="<"
+            nextPageText=">"
+          />
         </section>
 
       </div>
 
+      {/* 디테일 */}
       <Modal
         isOpen={modalIsOpen}
         style={customStyles}
         id="modal"
       >
-          <div className="modal_header">
-              {modalData.state ? 
-              <img src={modal_check_icon} className="modal_check" />:
-              <img src={modal_progress_icon} className="modal_check" />          
-            }
-              
-              <img onClick={() => {closeFnc()}} src={cancel_icon} className="modal_close"/>
-          </div>
+        <div className="modal_header">
+          {modalData.state ?
+            <img src={modal_check_icon} className="modal_check" /> :
+            <img src={modal_progress_icon} className="modal_check" />
+          }
 
-          <div className="modal_nav">
-            <div className="nav_btn_box">
-              <div className="nav_btn">
-                <img onClick={() => {deleteFnc()}} src={delete_icon} className="modal_delete" />
-              </div>
-              <div className="nav_btn" onClick={() => {editFnc();}}>
-                <img src={edit_icon} className="modal_edit" />
-              </div>
+          <img onClick={() => { closeFnc() }} src={cancel_icon} className="modal_close" />
+        </div>
+
+        <div className="modal_nav">
+          <div className="nav_btn_box">
+            <div className="nav_btn">
+              <img onClick={() => { deleteFnc() }} src={delete_icon} className="modal_delete" />
             </div>
-            {edit_state ?
-            <button onClick={()=>{editFnc2()}}>
+            <div className="nav_btn" onClick={() => { editFnc(); }}>
+              <img src={edit_icon} className="modal_edit" />
+            </div>
+          </div>
+          {edit_state ?
+            <button onClick={() => { editFnc2() }}>
               <img className="add2" src={plus_icon} />
             </button> :
-            <div></div>
+            <button onClick={() => { clearFnc() }}>
+              <span className="clear">CLEAR</span>
+            </button>
           }
-            
-          </div>
 
-          <div className="modal_content">
-            {edit_state ? <textarea value={edit_text} onChange={(e) => {setEdit_text(e.target.value)}}></textarea> :<p>{modalData.content}</p> }
-          </div>
+        </div>
+
+        <div className="modal_content">
+          {edit_state ? <textarea value={edit_text} onChange={(e) => { setEdit_text(e.target.value) }}></textarea> : <p>{modalData.content}</p>}
+        </div>
       </Modal>
 
-
+      {/* 추가 하는 모달창 */}
       <Modal
         isOpen={modalIsOpen2}
         style={customStyles}
         id="modal"
       >
-          <div className="modal_header2">
-              <img onClick={() => {closeFnc2()}} src={cancel_icon} className="modal_close"/>
-          </div>
+        <div className="modal_header2">
+          <img onClick={() => { closeFnc2() }} src={cancel_icon} className="modal_close" />
+        </div>
 
-          <div className="modal_content2">
-            <textarea onChange={(e) => setText(e.target.value)} autofocus></textarea>
-            
-            
-          </div>
+        <div className="modal_content2">
+          <textarea onChange={(e) => setText(e.target.value)} autofocus></textarea>
 
-          <div className="modal_add_btn">
-            <button onClick={()=>{addFnc()}}>
-              <img className="add" src={plus_icon} />
-            </button>
-          </div>
 
-          
+        </div>
+
+        <div className="modal_add_btn">
+          <button onClick={() => { addFnc() }}>
+            <img className="add" src={plus_icon} />
+          </button>
+        </div>
+
+
       </Modal>
 
 
