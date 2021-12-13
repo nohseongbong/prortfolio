@@ -1,0 +1,337 @@
+*,html,body{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+  }
+  
+  /* 배경 */
+  .todo_bg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    padding: 0 60px;
+  }
+  
+  /* 투두 리스트 */
+  .todo_bg .todo_wrap{
+    width: 840px;
+    max-width: 840px;
+    max-height: 650px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 3px 8px 1px rgb(150, 150, 150);
+  }
+  
+  /* 투두 리스트 헤더 */
+  .todo_bg .todo_wrap header {
+    display: flex;
+    align-items: center;
+    padding-left: 13%;
+    color: #fff;
+    background-color: #B3B7FF;
+    height: 120px;
+    position: relative;
+  }
+  
+  
+  /* 투두 리스트 테스크 */
+  .todo_bg .tasks_box{
+    display: flex;
+    align-items: center;
+  }
+  
+  .todo_bg .tasks_box h2{
+    font-size: 50px;
+    font-weight: 600;
+    margin-right: 25%;
+  }
+  /* 투두 리스트 추가 버튼 */
+  .todo_bg header .add_btn{
+    position: absolute;
+    right: 60px;
+    bottom: -40px;
+    width: 80px;
+    cursor: pointer;
+  }
+  
+  
+  .todo_bg .todo_wrap section nav{
+    height: 70px;
+    padding-left: 8%;
+    border-bottom: 2px solid #E7EBEE;
+  }
+  
+  .todo_bg .todo_wrap nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+    min-width: 150px;
+    height: 100%;
+  }
+  
+  .todo_bg .todo_wrap nav ul img{
+    width: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .todo_bg .todo_wrap nav ul li {
+    position: relative;
+    height: 71.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 50px;
+  }
+  
+  .todo_bg .todo_wrap nav ul li .affter_bar{
+    width: 50px;
+    height: 2px;
+    background-color: #8087D5;
+    position: absolute;
+    bottom: 0;
+    display: none;
+  }
+  
+  .todo_bg .todo_wrap nav ul li:hover .affter_bar{
+    display: block;
+  }
+  
+  .todo_bg .todo_wrap .list_view{
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .todo_bg .list_view li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    height: 65px;
+    width: 100%;
+    cursor: pointer;
+    border-bottom: 2px solid #E7EBEE;
+  }
+  
+  .todo_bg .list_view li .check{
+    width: 20px;
+  }
+  .todo_bg .list_view li .more_btn{
+    width: 10px;
+  }
+  .todo_bg .list_view li p{
+    color: #3a3a3a;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    overflow: hidden;
+    width: 80%;
+  }
+  
+  #modal {
+    background-color: red;
+  }
+  #modal img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  #modal .modal_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    background-color: #B3B7FF;
+    padding: 0px 20px;
+  }
+  
+  #modal .modal_check{
+    cursor: auto;
+    width: 23px;
+    height: 23px;
+  }
+  
+  #modal .modal_nav{
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 2px solid #E7EBEE;
+    height: 50px;
+    justify-content: space-between;
+  }
+  
+  #modal .modal_nav img{
+    width: 22px;
+    height: 22px;
+  }
+  
+  #modal .clear {
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  
+  
+  
+  #modal .modal_nav .nav_btn{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  #modal .modal_nav .nav_btn_box > div:first-child{
+    margin-right: 15px;
+  }
+  
+  #modal .modal_nav .nav_btn:hover{
+    background-color: rgb(216, 216, 216);
+  }
+  
+  
+  #modal .modal_content {
+    width: 100%;
+    height: 240px;
+    overflow: auto;
+  }
+  
+  #modal .modal_content p{
+    width: 100%;
+    word-wrap:break-word;
+    padding: 20px;
+    font-weight: bold;
+    color: #3a3a3a;
+  }
+  
+  #modal .modal_content::-webkit-scrollbar {
+    width: 6px;
+  }
+  #modal .modal_content::-webkit-scrollbar-thumb {
+    background-color: #B3B7FF;
+    border-radius: 25px;
+  }
+  #modal .modal_content::-webkit-scrollbar-track {
+    background-color: rgb(255, 255, 255);
+  }
+  #modal textarea::-webkit-scrollbar {
+    width: 6px;
+  }
+  #modal textarea::-webkit-scrollbar-thumb {
+    background-color: #B3B7FF;
+    border-radius: 25px;
+  }
+  #modal textarea::-webkit-scrollbar-track {
+    background-color: rgb(255, 255, 255);
+  }
+  
+  #modal .modal_header2{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    background-color: #B3B7FF;
+    padding: 0px 20px;
+  }
+  
+  #modal .modal_content2{
+    width: 100%;
+    height: 240px;
+    overflow: auto;
+  }
+  
+  #modal .modal_content2 textarea{
+    width: 100%;
+    height: 220px;
+    padding: 20px;
+    outline: none;
+    border: none;
+    word-wrap:break-word;
+    font-weight: bold;
+    color: #3a3a3a;
+    font-size: 18px;
+  }
+  #modal .modal_content textarea{
+    width: 100%;
+    height: 220px;
+    padding: 20px;
+    outline: none;
+    border: none;
+    word-wrap:break-word;
+    font-weight: bold;
+    color: #3a3a3a;
+    font-size: 18px;
+  }
+  
+  #modal .nav_btn_box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal_add_btn{
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+  }
+  
+  #modal .modal_nav .add2{
+    width: 15px;
+    height: 15px;
+  }
+  
+  #modal button{
+    outline: none;
+    border: none;
+    width: 60px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #B3B7FF;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  #modal .add{
+    width: 12px;
+    height: 12px;
+  }
+  
+  
+  /* 페이징 */
+  
+  .todo_bg .pagination{
+    display: flex;
+    max-width: 300px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  
+  .todo_bg .pagination > li{
+    margin: 10px;
+    cursor: pointer;
+  }
+  .todo_bg .pagination li a{
+    color: #3a3a3a;
+    text-decoration: none;
+    font-weight: bold;
+  
+  }
+  .todo_bg .pagination li.active a{ 
+    color: #B3B7FF; 
+  }
+  
