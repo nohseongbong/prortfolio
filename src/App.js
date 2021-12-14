@@ -2,60 +2,58 @@ import { useState, useEffect, useRef } from "react";
 
 import Dots from "./Dots";
 import Todo from './Todo/Todo.js'
-
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 import "./App.css";
 
 
 function App() {
 
-  const scrollRef = useRef({});
-
-  const content1 = useRef(null);
-  const content2 = useRef(null);
-  const content3 = useRef(null);
+  const scrollRef = useRef(null);
 
 
-  const [num ,setNum] =useState(1);
+  const nextClick = () => {
+    let ele = document.getElementsByClassName('control-arrow control-next')[0];
+    console.log('다음');
+    ele.click();
+  }
+  const prevClick = () => {
+    let ele = document.getElementsByClassName('control-arrow control-prev')[0];
+    console.log('이전');
+    ele.click();
+  }
+
   const onScroll = (e) => {
     console.log('new 스크롤' ,e.deltaY)
     
     if(e.deltaY > 0){
-      if(num < 3){
-          setNum(e => e+1)
-          // scrollFnc(num+1)
-      }
+      nextClick();
     }else{
-      if(num > 1){
-        setNum(e => e-1)
-        // scrollFnc(num-1)
-      }
+      prevClick();
     }
   };
 
-  // const scrollFnc = (num) => {
-  //   switch (num) {
-  //     case 1:
-  //       console.log(num , '실행됨' ,content1);
-  //       content1.current.scrollIntoView({ behavior: 'smooth' });
-  //     break;
-  //     case 2:
-  //       console.log(num , '실행됨');
-  //       content2.current.scrollIntoView({ behavior: 'smooth' });
-  //     break;
-  //     case 3:
-  //       console.log(num , '실행됨');
-  //       content3.current.scrollIntoView({ behavior: 'smooth' });
-  //     break;
-    
-  //   }
-  // }
+  const [works , setWorks] = useState([
+    {className : 'inner bg-yellow',title : 'portfolio1'},
+    {className : 'inner bg-blue',title : 'portfolio2'},
+    {className : 'inner bg-pink',title : 'portfolio3'},
+  ]);
+
+  let worksView = works.map((item,index) => {
+    return (
+      <div key={index} className={item.className}>
+        <div className="content">
+          {item.title}
+        </div>
+      </div>
+    )
+  }) 
 
   return (
-    <div ref={scrollRef} onWheel={onScroll} className="outer">
-        <Dots scrollIndex={num} />
-        <div className="inner bg-yellow">1</div>
-        <div className="inner bg-blue">2</div>
-        <div className="inner bg-pink">3</div>
+    <div onWheel={onScroll} className="main">
+        <Carousel transitionTime={1000}  ref={scrollRef} axis='vertical' className="outer"  showArrows={true} showThumbs={false} showStatus={false} infiniteLoop={false} emulateTouch={true}>
+          {worksView}
+        </Carousel>
     </div>
   );
 }
