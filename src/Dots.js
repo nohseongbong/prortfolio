@@ -1,38 +1,85 @@
-const Dot = ({ num, scrollIndex }) => {
-    return (
-        <div
-            style={{
-                width: 10,
-                height: 10,
-                border: "1px solid black",
-                borderRadius: 999,
-                backgroundColor: scrollIndex === num ? "black" : "transparent",
-                transitionDuration: 1000,
-                transition: "background-color 0.5s",
-            }}
-        ></div>
-    );
-};
+import { useState, useEffect, useRef } from "react";
+import { Animate, AnimateKeyframes, AnimateGroup } from "react-simple-animate";
 
-const Dots = ({ scrollIndex }) => {
+
+const Dots = ({ scrollIndex, items }) => {
+
+    const [dotsPlay, setDotsPlay] = useState(false);
+    const [bold, setbold] = useState('normal');
+    const [chocieIndex, setchocieIndex] = useState('');
+
+
+    const textHover = (event) => {
+        if(event.type == 'mouseenter'){
+            let key = event.target.attributes[0].value;
+            setchocieIndex(key);
+            console.log('마우스 엔터',event.target.attributes[0].value)
+            setbold('bold');
+        }else{
+            console.log('마우스 리브')
+            setchocieIndex('');
+            setbold('normal');
+        }
+    }
+
+
+
+    let dotsView = items.map((item, index) => {
+        return (
+            <Animate start={{ opacity: 0 }} end={{ opacity: 1 }} sequenceIndex={index}>
+                <span data-key={index} onMouseEnter={textHover} onMouseLeave={textHover} style={{color:item.color,cursor:'pointer',fontWeight:bold}} >
+                    {item.title}
+                </span>
+            </Animate>
+        )
+    })
+
+    const mouseOver = (event) => {
+        if(event.type == 'mouseenter'){
+            console.log('마우스 엔터')
+            setDotsPlay(true);
+        }else{
+            console.log('마우스 리브')
+            setDotsPlay(false);
+        }
+    }
+
+
     return (
-        <div style={{ position: "fixed", top: "50%", right: 100 }}>
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    width: 20,
-                    height: 100,
-                }}
-            >
-                <Dot num={1} scrollIndex={scrollIndex}></Dot>
-                <Dot num={2} scrollIndex={scrollIndex}></Dot>
-                <Dot num={3} scrollIndex={scrollIndex}></Dot>
-            </div>
+        <div style={{ backgroundColor: 'blue',width:130,position:'fixed',right:0,top:'50%',transform:'translate(0,-50%)'}} onMouseEnter={mouseOver} onMouseLeave={mouseOver}>
+            <AnimateGroup  play={dotsPlay}>
+                {dotsView}
+            </AnimateGroup>
         </div>
+
     );
 };
 
 export default Dots;
+
+
+<Animate play start={{ opacity: 0 }} end={{ opacity: 1 }}>
+    <h1>React simple animate</h1>
+</Animate>
+
+{/* animate keyframes with individual element. */ }
+<AnimateKeyframes
+    play
+    iterationCount="infinite"
+    keyframes={["opacity: 0", "opacity: 1"]}
+>
+    <h1>React simple animate with keyframes</h1>
+</AnimateKeyframes>
+
+{/* animate group of animation in sequences */ }
+<AnimateGroup play={false}>
+    <Animate start={{ opacity: 0 }} end={{ opacity: 1 }} sequenceIndex={0}>
+        first
+    </Animate>
+    <Animate start={{ opacity: 0 }} end={{ opacity: 1 }} sequenceIndex={1}>
+        second
+    </Animate>
+    <Animate start={{ opacity: 0 }} end={{ opacity: 1 }} sequenceIndex={2}>
+        third
+    </Animate>
+</AnimateGroup>
