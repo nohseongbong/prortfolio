@@ -7,7 +7,6 @@ import { Carousel } from 'react-responsive-carousel';
 import "./App.css";
 import { Animate, AnimateKeyframes, AnimateGroup } from "react-simple-animate";
 
-
 function App() {
 
   // 스크롤 테그 ref
@@ -52,6 +51,8 @@ function App() {
     {className : 'inner bg-yellow',title : 'portfolio1',color:'#FFF9D3',toggle:false},
     {className : 'inner bg-blue',title : 'portfolio2',color:'#2E9AB4',toggle:false},
     {className : 'inner bg-pink',title : 'portfolio3',color:'#B3B7FF',toggle:false},
+    {className : 'inner bg-pink',title : 'portfolio4',color:'#B3B7FF',toggle:false},
+    {className : 'inner bg-pink',title : 'portfolio5',color:'#B3B7FF',toggle:false},
   ]);
 
   let worksView = works.map((item,index) => {
