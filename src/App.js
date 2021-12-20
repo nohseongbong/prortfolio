@@ -7,6 +7,16 @@ import { Carousel } from 'react-responsive-carousel';
 import "./App.css";
 import { Animate, AnimateKeyframes, AnimateGroup } from "react-simple-animate";
 
+import omega_box from './assets/omega_box.png'
+import auntie_box from './assets/auntie_box.png'
+import yolijoli_box from './assets/yolijoli_box.png'
+import thunder_box from './assets/thunder_box.png'
+
+import omega_bg from './assets/omega_bg.png'
+import auntie_bg from './assets/auntie_bg.png'
+import yolijoli_bg from './assets/yolijoli_bg.png'
+import thunder_bg from './assets/thunder_bg.png'
+
 function App() {
 
   // 스크롤 테그 ref
@@ -48,27 +58,21 @@ function App() {
   };
 
   const [works , setWorks] = useState([
-    {className : 'inner bg-yellow',title : 'portfolio1',color:'#FFF9D3',toggle:false},
-    {className : 'inner bg-blue',title : 'portfolio2',color:'#2E9AB4',toggle:false},
-    {className : 'inner bg-pink',title : 'portfolio3',color:'#B3B7FF',toggle:false},
-    {className : 'inner bg-pink',title : 'portfolio4',color:'#B3B7FF',toggle:false},
-    {className : 'inner bg-pink',title : 'portfolio5',color:'#B3B7FF',toggle:false},
+    {className : 'inner',title : 'OMEGA',color:'#fff',box:omega_box,bg:omega_bg,toggle:false},
+    {className : 'inner',title : 'AuntieAnnes',color:'#fff',box:auntie_box,bg:auntie_bg,toggle:false},
+    {className : 'inner',title : 'YoliJoliCook',color:'#fff',box:yolijoli_box,bg:yolijoli_bg,toggle:false},
+    {className : 'inner',title : 'Thundering',color:'#fff',box:thunder_box,bg:thunder_bg,toggle:false},
   ]);
 
   let worksView = works.map((item,index) => {
     return (
       <div key={index} className={item.className}>
-        <div className="content">
-          {item.title}
+        <div className="content"  style={{ backgroundImage : `url(${item.box})` }}>
+          {/* <span>{item.title}</span> */}
         </div>
       </div>
     )
   }) 
-
-  const [dotsPlay, setDotsPlay] = useState(false);
-  const [chocieIndex, setchocieIndex] = useState('');
-
-  
 
   // 우측 메뉴
   const Dots = () => {
@@ -78,10 +82,10 @@ function App() {
         if(event.type == 'mouseenter'){
             console.log(event.target.id)
             let key = event.target.id;
-            setchocieIndex(key);
+            setChoiceIndex(key);
             choice[key].click()
         }else{
-            setchocieIndex('');
+            setChoiceIndex(0);
         }
     }
 
@@ -91,12 +95,11 @@ function App() {
         return (
           <div className="work" id={index}  key={index} onMouseEnter={textHover} onMouseLeave={textHover}>
             <Animate id={index} start={{ opacity: 0,display:'none' }} end={{ opacity: 1,display:'block' }} sequenceIndex={index}>
-                <div id={index} className="work_title"  style={{color:item.color,cursor:'pointer', fontSize : choiceIndex == index ? '35px' : '25px'}} >
+                <div id={index} className="work_title"  style={{color: choiceIndex == index ? item.color : 'rgba(0, 0, 0, 0.288)',cursor:'pointer', fontSize : choiceIndex == index ? '35px' : '25px'}} >
                     {item.title}
                 </div>
             </Animate>
 
-            <div id={index} style={{width:choiceIndex == index ? 10 : 7,height:choiceIndex == index ? 10 : 7,borderRadius:100,backgroundColor:item.color}}></div>
           </div>
         )
     })
@@ -108,18 +111,33 @@ function App() {
               </AnimateGroup>
         </div>
 
-    );
-};
+      );
+  };
+
+  let textItem = works.map((item, index) => {
+    return (
+      <div className="item_title"  key={index}>
+        {item.title}
+      </div>
+    )
+})
+
 
 
 
 
   return (
-    <div onWheel={onScroll} className="main">
+    <div onWheel={onScroll} className="main" style={{ backgroundImage : `url(${works[choiceIndex].bg})` }} >
         <Carousel onChange={(e) => {console.log(e,'이겅');setChoiceIndex(e)}} transitionTime={700}  ref={scrollRef} axis='vertical' className="outer"  showArrows={false} showThumbs={false} showStatus={false} infiniteLoop={false} emulateTouch={true}>
           {worksView}
         </Carousel>
         {Dots()}
+
+        <div className="titleBox">
+          <div className="title_inner">
+            {textItem}
+          </div>
+        </div>
     </div>
   );
 }
