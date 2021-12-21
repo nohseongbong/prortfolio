@@ -1,0 +1,20 @@
+.menu{
+    width: 0;
+    height: 0;
+    background-color: black;
+    transition: 1.5s;
+    z-index: 1000;
+    position: fixed;
+    right: 5vw;
+    top: 5vh;
+    opacity: 0;
+    border-radius: 100%;
+}
+.menu.menuOn{
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    opacity: 1;
+    border-radius: 0;
+}

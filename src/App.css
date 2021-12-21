@@ -5,53 +5,46 @@ body {
   box-sizing: border-box;
 }
 .main{
-  transition: 1.5s;
+transition: 1.5s;
 }
 
 .main .outer {
-  height: 100vh;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+height: 100vh;
+/* overflow-y: auto; */
+/* display: flex; */
+/* flex-direction: column;
+align-items: center;
+justify-content: space-around; */
 }
 
 .main .content {
-  width: 80%;
-  height: 70%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  box-shadow: 0px 5px 30px 3px rgb(59, 59, 59);
-  border-radius: 15px;
-  background-position: center;
-  position: relative;
+width: 80%;
+height: 70%;
+background-size: cover;
+background-repeat: no-repeat;
+box-shadow: 0px 5px 30px 3px rgb(59, 59, 59);
+border-radius: 15px;
+background-position: center;
+position: relative;
+cursor: pointer;
 }
 
-/* .main .content span{
-  position: absolute;
-  color: #fff;
-  left: -25%;
-  top: 50%;
-  font-size: 5vw;
-  font-weight: 300;
-  transform: rotate(-20deg);
-} */
+
 
 /* 화면에서 스크롤바 안보이게 */
 .main .outer::-webkit-scrollbar {
-  display: none;
+display: none;
 }
 
 .main .inner {
-  /* width: 1300px; */
-  max-width: 75%;
-  margin: 0 auto;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 100px;
+/* width: 1300px; */
+max-width: 75%;
+margin: 0 auto;
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 100px;
 
 }
 
@@ -60,57 +53,136 @@ body {
 /* dots */
 
 .main .works{
-  width: 15vw;
-  min-height: 200px;
-  position: fixed;
-  right: 0;
-  top: 50%;
-  transform: translate(0,-50%);
+width: 15vw;
+min-height: 200px;
+position: fixed;
+right: 0;
+top: 50%;
+transform: translate(0,-50%);
 }
 
 .main .work{
-  margin: 40px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+margin: 40px 0;
+display: flex;
+align-items: center;
+justify-content: space-around;
 }
 
 .main .work_title{
-  font-weight: normal;
-  font-size: 25px;
-  transition: 0.5s;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+font-weight: normal;
+font-size: 25px;
+transition: 0.5s;
+text-align: center;
+display: flex;
+align-items: center;
+justify-content: center;
 
 }
 .main .work:hover .work_title{
-  font-size: 35px;
+font-size: 35px;
 }
 
 .main .control-dots{
-  display: none;
+display: none;
 }
 
 
 
 .main .item_title{
-  color: #fff;
-  font-size: 5vw;
-  font-weight: 300;
-  transform: rotate(-20deg);
-  margin: 30px 0;
+color: #fff;
+font-size: 5vw;
+font-weight: 400;
+/* transform: rotate(-20deg); */
+/* margin: 30px 0; */
+width: 100%;
 }
 
 .main .titleBox{
-  position: absolute;
-  left: 10%;
-  top: 45%;
+position: absolute;
+left: 10%;
+top: 45%;
+transform: rotate(-20deg); 
 }
 
-.main .title_inner{
-  overflow: hidden;
-  width: 20vw;
-  height: 25vh;
+/* .main #circle {
+position: absolute;
+left: 10%;
+top: 45%;
+transform: rotate(-20deg); 
+width: 30vw;
+height: 12vh;
+border-radius: 100px / 50px;
+border: 1px solid #fff;
+background-color: red;
+} */
+
+.main .btn {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100px;
+height: 100px;
+border-radius: 100px;
+position: absolute;
+bottom: 20vh;
+right: 17vw;
+background-color: red;
+cursor: pointer;
+transition: 1.5s;
 }
+
+.main .btn:hover{
+  bottom: 23vh;
+  transition: 0.5s;
+}
+
+.main .btn img{
+width: 50px;
+height: 50px;
+}
+
+
+.main .ham_btn{
+  position: fixed;
+  right: 5vw;
+  top: 5vh;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.main .line{
+  width: 50px;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 100px;
+  margin: 4px auto;
+  transition: 1s cubic-bezier(0.76, 0, 0.24, 1);
+  
+}
+
+.main .line.on{
+  position: absolute;
+  top: 50%;
+  /* left: 50%; */
+  transform: translate(-50%, -50%);
+  margin: 0;
+  background-color: #fff;
+}
+
+.main .line1.on{
+  transform: rotate(45deg);
+}
+.main .line2.on{
+  transform: rotate(-45deg);
+}
+
+
+
+
+
