@@ -1,0 +1,82 @@
+.contact{
+    width: 0;
+    height: 0;
+    background-color: black;
+    transition: 1.2s;
+    z-index: 1000;
+    position: fixed;
+    opacity: 0;
+    overflow: hidden;
+    border-radius: 0% 0% 0% 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.contact.contactOn{
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    opacity: 1;
+    border-radius: 0;
+}
+
+.contact h2{
+    position: absolute;
+    top: 5vh;
+    left: 5vw;
+    color: #fff;
+    font-size: 5vw;
+    font-weight: 400;
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
+    color: #000;
+    transform: rotate(-7deg);
+}
+
+.contact .contact_content{
+    color: #fff;
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact .contact_content .text_box{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 40%;
+    height: 50%;
+    flex-direction: row;
+    font-size: 24px;
+}
+
+.contact .text_box > div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    flex-direction: column;
+    height: 80%;
+}
+
+.contact .contact_content .link_box{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 40%;
+    height: 50%;
+    flex-direction: row;
+}
+
+.contact .contact_content img{
+    width: 120px;
+}

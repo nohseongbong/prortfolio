@@ -1,13 +1,24 @@
 
 import "./menu.css";
-const menu = ({state}) => {
-    console.log('메뉴', state)
+import { useState, useEffect, useRef } from "react";
+const Menu = ({state,cursorPointer,page,setPage,toggle}) => {
+    console.log('메뉴', page)
+
+    const [menuData , setMenuData] = useState([{page : 'About'},{page : 'Works'},{page : 'Contact'}])
+    let menuView =  menuData.map((item,index) => {
+        return (
+            <span key={index} className={page == item.page ? "pointer now" : "pointer"} onClick={() => {setPage(item.page);toggle(false);}} onMouseEnter={cursorPointer} onMouseLeave={cursorPointer} >{item.page}</span>
+        )
+    })
+
     return(
         <div className={state ? "menu menuOn" : "menu"}>
-            <div>메뉴</div>
+            <div className="menu_content">
+                {menuView}
+            </div>
         </div>
 
     )
 }
 
-export default menu;
+export default Menu;
