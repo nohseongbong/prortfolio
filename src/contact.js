@@ -7,6 +7,7 @@ import naver from './assets/naver.png'
 import tel from './assets/tel.png'
 import kakao from './assets/kakao.png'
 import facebook from './assets/facebook.png'
+import instagram from './assets/instagram.png'
 
 const Contact = ({state,cursorPointer,page,setPage,toggle}) => {
 
@@ -25,9 +26,23 @@ const Contact = ({state,cursorPointer,page,setPage,toggle}) => {
                     </div>
                 </div>
                 <div className="link_box">
-                    <img className="pointer" src={git} onMouseEnter={cursorPointer} onMouseLeave={cursorPointer} />
-                    <img className="pointer" src={kakao} onMouseEnter={cursorPointer} onMouseLeave={cursorPointer} />
-                    <img className="pointer" src={facebook} onMouseEnter={cursorPointer} onMouseLeave={cursorPointer} />
+
+                    <a href="https://github.com/nohseongbong/" target="_blank">
+                        <img className="pointer" src={git} onMouseEnter={cursorPointer} onMouseLeave={cursorPointer} />
+                    </a>
+
+                    <a href="https://open.kakao.com/o/sJgJuuQd" target="_blank">
+                        <img className="pointer" src={kakao} onMouseEnter={cursorPointer} onMouseLeave={cursorPointer} />
+                    </a>
+
+                    <a href="https://www.facebook.com/shtjdqhd" target="_blank">
+                        <img className="pointer" src={facebook} onMouseEnter={cursorPointer} onMouseLeave={cursorPointer} />
+                    </a>
+
+                    <a href="https://www.instagram.com/seongbongnoh/" target="_blank">
+                        <img className="pointer" src={instagram} onMouseEnter={cursorPointer} onMouseLeave={cursorPointer} />
+                    </a>
+
                 </div>
             </div>
         </div>

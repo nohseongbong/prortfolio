@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 
-import Dots from "./Dots";
 import Todo from './Todo/Todo.js'
 import Menu from './menu.js'
 import Contact from './contact'
+import Omega from './works/omega'
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -26,9 +26,12 @@ import arrow from './assets/arrow.png'
 
 function App() {
 
+  // 현재 works 화면
+  // const [nowWork,setNowWork] = useState('');
+
 
   // 현재 페이지
-  const [nowPage , setNowPage] = useState('Works');
+  const [nowPage , setNowPage] = useState('OMEGA');
 
   // 메뉴 토글
   const [toggle,setToggle] = useState(false);
@@ -86,23 +89,23 @@ function App() {
 
   // 워크스 데이터
   const [works , setWorks] = useState([
-    {className : 'inner',title : 'OMEGA',color:'#fff',box:omega_box,bg:omega_bg,toggle:false , textColor : '#B93A3A',circle : '#B93A3A'},
-    {className : 'inner',title : 'AuntieAnnes',color:'#fff',box:auntie_box,bg:auntie_bg,toggle:false , textColor : '#FFB500' , circle : '#FFB500'},
-    {className : 'inner',title : 'YoliJoliCook',color:'#fff',box:yolijoli_box,bg:yolijoli_bg,toggle:false , textColor : '#fff', circle : '#9B3B1C'},
-    {className : 'inner',title : 'ThundeRing',color:'#fff',box:thunder_box,bg:thunder_bg,toggle:false , textColor : '#004BBA', circle : '#004BBA'},
-    {className : 'inner',title : 'TodoList',color:'#fff',box:todo_box,bg:todo_bg,toggle:false , textColor : '#302900', circle : '#302900'},
+    {className : 'inner',title : 'OMEGA',box:omega_box,bg:omega_bg,toggle:false , textColor : '#B93A3A',circle : '#B93A3A'},
+    {className : 'inner',title : 'AuntieAnnes',box:auntie_box,bg:auntie_bg,toggle:false , textColor : '#FFB500' , circle : '#FFB500'},
+    {className : 'inner',title : 'YoliJoliCook',box:yolijoli_box,bg:yolijoli_bg,toggle:false , textColor : '#fff', circle : '#9B3B1C'},
+    {className : 'inner',title : 'ThundeRing',box:thunder_box,bg:thunder_bg,toggle:false , textColor : '#004BBA', circle : '#004BBA'},
+    {className : 'inner',title : 'TodoList',box:todo_box,bg:todo_bg,toggle:false , textColor : '#302900', circle : '#302900'},
   ]);
 
   // 컨텐츠 화면
   let worksView = works.map((item,index) => {
     return (
-      <div key={index} className={item.className}>
+      <div key={index} className={item.className} onClick={() => {setNowPage(item.title);}} >
         <div className="content pointer"  style={{ backgroundImage : `url(${item.box})` }} onMouseEnter={cursorPointer} onMouseLeave={cursorPointer}>
-          {/* <span>{item.title}</span> */}
         </div>
       </div>
     )
   }) 
+
 
   // 우측 메뉴
   const Dots = () => {
@@ -161,7 +164,8 @@ function App() {
       setScrollState(true)
     }
   }, [toggle])
-
+  
+  // 좌측 택스트 캐러셀
   const subFnc = (e) =>{
     let choice = document.getElementsByClassName('dot');
     choice[Number(e)+5].click();
@@ -169,7 +173,7 @@ function App() {
 
   }
 
-  
+  // 마우스 커서 설정
   useEffect(() => {
     let mouseCursor = document.querySelector(".cursor");
     window.addEventListener("scroll", cursor);
@@ -181,18 +185,11 @@ function App() {
 
   }, [])
 
-
- 
-
-
-  // 최종 화면
-  return (
-    <div onWheel={onScroll} className="main" style={{ backgroundImage : `url(${works[choiceIndex].bg})` }} >
-        {/* 커서 포인트 */}
-        <div className="cursor"></div>
-
-
-        {/* works 목록 */}
+  // 메인화면
+  let mainView = () => {
+    return (
+      <>
+      {/* works 목록 */}
         <Carousel onChange={(e) => {setChoiceIndex(e);subFnc(e) }} transitionTime={700}  ref={scrollRef} axis='vertical' className="outer"  showArrows={false} showThumbs={false} showStatus={false} infiniteLoop={false} emulateTouch={true}>
           {worksView}
         </Carousel>
@@ -208,20 +205,44 @@ function App() {
         
 
         {/* works 화살표 버튼 */}
-        <div className="btn pointer" style={{backgroundColor:works[choiceIndex].circle}} onMouseEnter={cursorPointer} onMouseLeave={cursorPointer}>
+        <div className="btn pointer" style={{backgroundColor:works[choiceIndex].circle}} onClick={() => {setNowPage(works[choiceIndex].title);}} onMouseEnter={cursorPointer} onMouseLeave={cursorPointer}>
           <img src={arrow} />
         </div>
 
 
+      </>
+
+    )
+  }
+
+
+  // 최종 화면
+  return (
+    <div onWheel={onScroll} className="main" style={{ backgroundImage : `url(${works[choiceIndex].bg})` }} >
+      {/* 커서 포인트 */}
+        <div className="cursor"></div>
+
         {/* 메뉴 토글 버튼 */}
         <div className="ham_btn pointer" onClick={() => {setToggle(!toggle); }} onMouseEnter={cursorPointer} onMouseLeave={cursorPointer}>
-            <div style={{backgroundColor:toggle ? '#fff' : works[choiceIndex].textColor}} className={toggle ? "line line1 on" : "line line1"}></div>
+          <div style={{backgroundColor:toggle ? '#fff' : works[choiceIndex].textColor}} className={toggle ? "line line1 on" : "line line1"}></div>
             <div style={{backgroundColor:toggle ? '#fff' : works[choiceIndex].textColor}} className={toggle ? "line line2 on" : "line line2"}></div>
         </div>   
+      
 
+        {/* 메인페이지 */}
+        {/* { nowPage == 'Works' ? mainView() : null} */}
+        {  mainView()}
 
-        {/* 연락처 */}
+        {/* 오메가 */}
+        <Omega page={nowPage} />
+
+        {/* 투두 todo list */}
+        <Todo page={nowPage} /> 
+      
+        {/* 연락처 contack */}
         <Contact page={nowPage} cursorPointer={cursorPointer} />
+
+
 
         {/* 메뉴창 */}
         <Menu state={toggle} cursorPointer={cursorPointer} page={nowPage} setPage={setNowPage} toggle={setToggle} />

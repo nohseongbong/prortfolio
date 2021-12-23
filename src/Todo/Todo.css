@@ -10,9 +10,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     padding: 0 60px;
+    background-color: #fff;
+    transition: 1.2s;
+    position: absolute;
+    /* bottom: -100%; */
+    top: 0;
+    overflow: hidden;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  .todoOn{
+    /* width: 100vw;
+    height: 100vh; */
+    /* bottom: 0; */
+    opacity: 1;
+    z-index: 1000;
   }
   
   /* 투두 리스트 */
@@ -54,7 +70,7 @@
     right: 60px;
     bottom: -40px;
     width: 80px;
-    cursor: pointer;
+    
   }
   
   
@@ -87,7 +103,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    
     width: 50px;
   }
   
@@ -116,7 +132,7 @@
     padding: 0 6%;
     height: 65px;
     width: 100%;
-    cursor: pointer;
+    
     border-bottom: 2px solid #E7EBEE;
   }
   
@@ -135,13 +151,18 @@
     width: 80%;
   }
   
+  .ReactModal__Overlay {
+    z-index: 1000;
+  }
+
   #modal {
     background-color: red;
+    z-index: 1000;
   }
   #modal img {
     width: 30px;
     height: 30px;
-    cursor: pointer;
+    
   }
   #modal .modal_header {
     display: flex;
@@ -187,7 +208,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    
   }
   
   #modal .modal_nav .nav_btn_box > div:first-child{
@@ -302,7 +323,7 @@
     justify-content: center;
     background-color: #B3B7FF;
     border-radius: 3px;
-    cursor: pointer;
+    
   }
   
   #modal .add{
@@ -323,7 +344,7 @@
   
   .todo_bg .pagination > li{
     margin: 10px;
-    cursor: pointer;
+    
   }
   .todo_bg .pagination li a{
     color: #3a3a3a;

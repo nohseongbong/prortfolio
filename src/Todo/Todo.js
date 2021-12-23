@@ -20,7 +20,7 @@ import proceeding_list_icon from '../assets/proceeding_list_icon.png'
 import progress_icon from '../assets/progress_icon.png'
 import plus_icon from '../assets/plus_icon.png'
 
-function Todo() {
+function Todo({page}) {
 
   const customStyles = {
     content: {
@@ -260,7 +260,7 @@ function Todo() {
 
   return (
     // 배경
-    <div className="todo_bg">
+    <div className={page == 'TodoList' ? "todo_bg todoOn" : "todo_bg"} >
 
       {/* to do list 컨테이너 */}
       <div className="todo_wrap">
@@ -325,9 +325,10 @@ function Todo() {
         </section>
 
       </div>
-
-      {/* 디테일 */}
-      <Modal
+      {page == 'TodoList' ? 
+      <>
+        {/* 디테일 */}
+        <Modal
         isOpen={modalIsOpen}
         style={customStyles}
         id="modal"
@@ -371,7 +372,7 @@ function Todo() {
         isOpen={modalIsOpen2}
         style={customStyles}
         id="modal"
-      >
+        >
         <div className="modal_header2">
           <img onClick={() => { closeFnc2() }} src={cancel_icon} className="modal_close" />
         </div>
@@ -390,7 +391,10 @@ function Todo() {
 
 
       </Modal>
-
+    </>
+      :null
+    }
+    
 
 
 

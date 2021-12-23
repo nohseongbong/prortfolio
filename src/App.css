@@ -8,7 +8,7 @@ html{
   border: 1px solid rgb(116, 117, 119);
   border-radius: 50%;
   position: absolute;
-  z-index: 10000;
+  z-index: 20000;
   transform: translate(-50%, -50%);
   pointer-events: none;
   transition: all 0.8s ease;
@@ -126,6 +126,7 @@ font-weight: 400;
 /* transform: rotate(-20deg); */
 /* margin: 30px 0; */
 width: 100%;
+box-sizing: border-box;
 }
 
 .main .titleBox{
@@ -136,18 +137,6 @@ transform: rotate(-20deg);
 -webkit-text-stroke: 1px rgb(44, 44, 44);
 
 }
-
-/* .main #circle {
-position: absolute;
-left: 10%;
-top: 45%;
-transform: rotate(-20deg); 
-width: 30vw;
-height: 12vh;
-border-radius: 100px / 50px;
-border: 1px solid #fff;
-background-color: red;
-} */
 
 .main .btn {
 display: flex;
@@ -186,7 +175,7 @@ height: 50px;
   justify-content: center;
   flex-direction: column;
 
-  z-index: 10000;
+  z-index: 10001;
 }
 
 .main .line{
