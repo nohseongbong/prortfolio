@@ -21,10 +21,9 @@
     position: absolute;
     top: 0;
     width: 100%;
-    height: 1500px;
+    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .omega::-webkit-scrollbar {
@@ -54,8 +53,10 @@
   }
 
 .omega .btn2 {
-    width: 100px;
-    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    width: 20vw;
+    height: 20vw;
     border-radius: 100px;
     background-color: rgb(87, 23, 23);
     transition: 1.5s;
@@ -66,9 +67,121 @@
     right: 60px;
     top: 70vh ;
     transform: rotate(135deg);
+    
 }
 
 .main .btn2 img{
-    width: 50px;
-    height: 50px;
-    }
+    width: 50%;
+    height: 50%;
+}
+
+.omega .omega_box1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+}
+
+.omega .omega_box1 > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 1400px;
+    width: 90%;
+    height: 100vh;
+}
+
+.omega .number{
+    font-size: 12vw;
+    font-style: oblique;
+    -webkit-text-stroke: 1px rgb(44, 44, 44);
+    color: #fff;
+}
+
+.omega .project_about{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.omega .project_about li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.omega .project_about li span{
+    margin: 10px 0;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.omega .project_about li h3{
+    font-weight: normal;
+}
+
+
+.omega .omega_box2{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(170, 123, 123);
+    box-shadow:inset 0px 0px 5px 1px rgb(190, 190, 190);
+    background: url('../assets/omega_img1.png') no-repeat center center / cover;
+}
+.omega .omega_box3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 200px 0;
+    flex-direction: column;
+}
+
+.omega .omega_box3 img{
+    margin: 50px 0;
+    max-width: 800px;
+    width: 90%;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px 1px rgb(190, 190, 190);
+}
+
+.omega .omega_box4 {
+    width: 100%;
+    padding: 200px 0;
+    background: #fcfcfc;
+    box-shadow:inset 0px 0px 5px 1px rgb(190, 190, 190);
+}
+
+.omega .omega_box4 > div{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.omega .omega_box4 > div > div{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.omega .omega_box4 img {
+    box-shadow: 0px 2px 20px 1px rgb(190, 190, 190);
+    border-radius: 10px;
+    max-width: 400px;
+    width: 40%;
+}
+
+.omega .omega_box4 > div > div:nth-child(odd){
+    justify-content: flex-end;
+}
+
+

@@ -47,7 +47,7 @@ justify-content: space-around; */
 }
 
 .main .content {
-  width: 80%;
+  width: 95%;
   height: 70%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -68,7 +68,7 @@ display: none;
 
 .main .inner {
 /* width: 1300px; */
-max-width: 75%;
+max-width: 65vw;
 margin: 0 auto;
 height: 100vh;
 display: flex;

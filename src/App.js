@@ -234,7 +234,7 @@ function App() {
         {  mainView()}
 
         {/* 오메가 */}
-        <Omega page={nowPage} />
+        <Omega page={nowPage} cursorPointer={cursorPointer} />
 
         {/* 투두 todo list */}
         <Todo page={nowPage} /> 
