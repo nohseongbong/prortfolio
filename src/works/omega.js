@@ -17,15 +17,36 @@ import omega_mobile7 from '../assets/omega_mobile7.png'
 import omega_mobile8 from '../assets/omega_mobile8.png'
 
 
+import omega_img_m1 from '../assets/omega_img_m1.png'
+
+
+
+
 
 const Omega = ({ page,cursorPointer }) => {
-    console.log(page, '오메가')
+
+
+    const [ScrollY, setScrollY] = useState(0);  // 스크롤값을 저장하기 위한 상태
+    const scroll = (e)=>{
+        setScrollY(e.target.scrollTop)
+    }
+
+    const omegaRef = useRef(null);
+    function scrollTop() {
+        omegaRef.current.scrollTop = 0;
+    }
+
+    useEffect(() => {
+        return () => {
+            scrollTop()
+        }
+    }, [page])
     return (
-        <div className={page == 'OMEGA' ? "omega omegaOn" : "omega"}>
+        <div onScroll={scroll} ref={omegaRef} className={page == 'OMEGA' ? "omega omegaOn" : "omega"}>
             <div className="omega_content">
                 <div className='omega_banner' >
-                    <div className="content2 pointer" style={{ backgroundImage: `url(${omega_box})` }} ></div>
-                    <div className="btn2 pointer" >
+                    <div className="content2 pointer"></div>
+                    <div className="btn2 pointer" onClick={()=>{scrollTop()}} onMouseEnter={cursorPointer} onMouseLeave={cursorPointer} style={ScrollY != 0 ? {transform: 'rotate(-45deg)'} : {transform: 'rotate(135deg)'}} >
                         <img src={arrow} />
                     </div>
                 </div>
@@ -40,7 +61,7 @@ const Omega = ({ page,cursorPointer }) => {
                             <li><h3>YEAR</h3><span>2020</span></li>
                             <li><h3>LANGUAGE</h3><span>html5 & css3 & jquery</span></li>
                             <li><h3>PROJECT</h3><span>OMEGA web renewal</span></li>
-                            <li><h3>Contribution</h3><span>100%</span></li>
+                            <li><h3>CONTRIBUTION</h3><span>100%</span></li>
                         </ul>
                     </div>
                 </section>

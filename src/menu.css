@@ -32,7 +32,6 @@
     -webkit-text-stroke: 1px rgb(255, 255, 255);
     transition: 0.7s;
     opacity: 1;
-    margin: 15vh 0;
 }
 
 .menu .menu_content span:hover{
@@ -51,8 +50,7 @@
 }
 
 .menu .menu_content span:nth-last-of-type(2){
-    position: absolute;
-    right: 0;
+    margin-left: 40%;
 }
 
 .menu .menu_content .now{

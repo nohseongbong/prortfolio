@@ -10,6 +10,9 @@ import { Carousel } from 'react-responsive-carousel';
 import "./App.css";
 import { Animate, AnimateKeyframes, AnimateGroup } from "react-simple-animate";
 
+import omega_box_m from './assets/omega_box_m.png'
+import auntie_box_m from './assets/auntie_box_m.png'
+
 import omega_box from './assets/omega_box.png'
 import auntie_box from './assets/auntie_box.png'
 import yolijoli_box from './assets/yolijoli_box.png'
@@ -25,6 +28,20 @@ import todo_bg from './assets/todo_bg.png'
 import arrow from './assets/arrow.png'
 
 function App() {
+
+  // 윈도우 사이즈
+  const [windowSize, setWindowSize] = useState({width:window.innerWidth, height:window.innerWidth})
+    useEffect(()=> {
+        let windowSizer = () => { 
+            console.log(document.body.clientWidth,'가로')
+            setWindowSize({width:document.body.clientWidth, height:document.body.clientHeight})
+        }
+        window.addEventListener('resize', windowSizer)
+        return () => {
+            window.removeEventListener('resize', windowSizer)
+            
+        }
+    },[windowSize])
 
   // 현재 works 화면
   // const [nowWork,setNowWork] = useState('');
@@ -89,18 +106,18 @@ function App() {
 
   // 워크스 데이터
   const [works , setWorks] = useState([
-    {className : 'inner',title : 'OMEGA',box:omega_box,bg:omega_bg,toggle:false , textColor : '#B93A3A',circle : '#B93A3A'},
-    {className : 'inner',title : 'AuntieAnnes',box:auntie_box,bg:auntie_bg,toggle:false , textColor : '#FFB500' , circle : '#FFB500'},
-    {className : 'inner',title : 'YoliJoliCook',box:yolijoli_box,bg:yolijoli_bg,toggle:false , textColor : '#fff', circle : '#9B3B1C'},
-    {className : 'inner',title : 'ThundeRing',box:thunder_box,bg:thunder_bg,toggle:false , textColor : '#004BBA', circle : '#004BBA'},
-    {className : 'inner',title : 'TodoList',box:todo_box,bg:todo_bg,toggle:false , textColor : '#302900', circle : '#302900'},
+    {className : 'inner',title : 'OMEGA',mbox:omega_box_m,box:omega_box,bg:omega_bg,toggle:false , textColor : '#B93A3A',circle : '#B93A3A'},
+    {className : 'inner',title : 'AuntieAnnes',mbox:auntie_box_m,box:auntie_box,bg:auntie_bg,toggle:false , textColor : '#FFB500' , circle : '#FFB500'},
+    {className : 'inner',title : 'YoliJoliCook',mbox:yolijoli_box,box:yolijoli_box,bg:yolijoli_bg,toggle:false , textColor : '#fff', circle : '#9B3B1C'},
+    {className : 'inner',title : 'ThundeRing',mbox:thunder_box,box:thunder_box,bg:thunder_bg,toggle:false , textColor : '#004BBA', circle : '#004BBA'},
+    {className : 'inner',title : 'TodoList',mbox:todo_box,box:todo_box,bg:todo_bg,toggle:false , textColor : '#302900', circle : '#302900'},
   ]);
 
   // 컨텐츠 화면
   let worksView = works.map((item,index) => {
     return (
       <div key={index} className={item.className} onClick={() => {setNowPage(item.title);}} >
-        <div className="content pointer"  style={{ backgroundImage : `url(${item.box})` }} onMouseEnter={cursorPointer} onMouseLeave={cursorPointer}>
+        <div className="content pointer"  style={windowSize.width > 768 ? { backgroundImage : `url(${item.box})` } : { backgroundImage : `url(${item.mbox})` }} onMouseEnter={cursorPointer} onMouseLeave={cursorPointer}>
         </div>
       </div>
     )
@@ -220,7 +237,7 @@ function App() {
   return (
     <div onWheel={onScroll} className="main" style={{ backgroundImage : `url(${works[choiceIndex].bg})` }} >
       {/* 커서 포인트 */}
-        <div className="cursor"></div>
+        <div className="cursor" ></div>
 
         {/* 메뉴 토글 버튼 */}
         <div className="ham_btn pointer" onClick={() => {setToggle(!toggle); }} onMouseEnter={cursorPointer} onMouseLeave={cursorPointer}>

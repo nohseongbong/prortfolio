@@ -42,7 +42,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 .contact .contact_content .text_box{
@@ -76,5 +75,53 @@
 }
 
 .contact .contact_content img{
-    width: 120px;
+    max-width: 120px;
+}
+
+
+
+@media screen and (max-width: 1068px){
+
+    .contact .contact_content .text_box{
+        justify-content: space-around;
+        width: 90%;
+        height: 47%;
+        flex-direction: row;
+        font-size: 19px;
+        max-width: 500px;
+        margin-bottom: 3%;
+    }
+
+    .contact .text_box > div{
+        justify-content: space-between;
+        width: 100%;
+        flex-direction: row;
+        height: 50%;
+    }
+    .contact .text_box > div span{
+        width: 50%;
+    }
+
+    .contact .contact_content .link_box{
+        display: flex;
+        gap: 25px;
+        justify-content: space-between;
+        width: 90%;
+        max-width: 500px;
+        height: 50%;
+    }
+
+    .contact .contact_content img{
+        width: 90px;
+    }
+}
+
+@media screen and (max-width: 768px){
+
+    .contact .contact_content .text_box{
+        font-size: 14px;
+    }
+    .contact .contact_content img{
+        width: 80px;
+    }
 }
