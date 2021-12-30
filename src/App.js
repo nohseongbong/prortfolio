@@ -4,6 +4,8 @@ import Todo from './Todo/Todo.js'
 import Menu from './menu.js'
 import Contact from './contact'
 import Omega from './works/omega'
+import AuntieAnnes from './works/auntieannes'
+import YoliJoliCook from './works/yolijolicook'
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -33,7 +35,6 @@ function App() {
   const [windowSize, setWindowSize] = useState({width:window.innerWidth, height:window.innerWidth})
     useEffect(()=> {
         let windowSizer = () => { 
-            console.log(document.body.clientWidth,'가로')
             setWindowSize({width:document.body.clientWidth, height:document.body.clientHeight})
         }
         window.addEventListener('resize', windowSizer)
@@ -48,7 +49,7 @@ function App() {
 
 
   // 현재 페이지
-  const [nowPage , setNowPage] = useState('OMEGA');
+  const [nowPage , setNowPage] = useState('Works');
 
   // 메뉴 토글
   const [toggle,setToggle] = useState(false);
@@ -108,7 +109,7 @@ function App() {
   const [works , setWorks] = useState([
     {className : 'inner',title : 'OMEGA',mbox:omega_box_m,box:omega_box,bg:omega_bg,toggle:false , textColor : '#B93A3A',circle : '#B93A3A'},
     {className : 'inner',title : 'AuntieAnnes',mbox:auntie_box_m,box:auntie_box,bg:auntie_bg,toggle:false , textColor : '#FFB500' , circle : '#FFB500'},
-    {className : 'inner',title : 'YoliJoliCook',mbox:yolijoli_box,box:yolijoli_box,bg:yolijoli_bg,toggle:false , textColor : '#fff', circle : '#9B3B1C'},
+    {className : 'inner',title : 'YoliJoliCook',mbox:yolijoli_box,box:yolijoli_box,bg:yolijoli_bg,toggle:false , textColor : '#FFD88A', circle : '#9B3B1C'},
     {className : 'inner',title : 'ThundeRing',mbox:thunder_box,box:thunder_box,bg:thunder_bg,toggle:false , textColor : '#004BBA', circle : '#004BBA'},
     {className : 'inner',title : 'TodoList',mbox:todo_box,box:todo_box,bg:todo_bg,toggle:false , textColor : '#302900', circle : '#302900'},
   ]);
@@ -252,6 +253,10 @@ function App() {
 
         {/* 오메가 */}
         <Omega page={nowPage} cursorPointer={cursorPointer} />
+        {/* 앤티앤스 */}
+        <AuntieAnnes page={nowPage} cursorPointer={cursorPointer} />
+        {/* 요리조리 쿡 */}
+        <YoliJoliCook page={nowPage} cursorPointer={cursorPointer} />
 
         {/* 투두 todo list */}
         <Todo page={nowPage} /> 

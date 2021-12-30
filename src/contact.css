@@ -125,3 +125,14 @@
         width: 80px;
     }
 }
+
+@media screen and (max-width: 468px){
+
+    .contact .contact_content .link_box a{
+        width: 40%;
+    }
+    .contact .contact_content .link_box {
+        margin-top: 30px;
+    }
+}
+

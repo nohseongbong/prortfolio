@@ -136,10 +136,10 @@
     flex-direction: column;
     justify-content: space-between;
     width: 100vw;
-    height: 100vh;
+    height: 37vw;
     background-color: rgb(170, 123, 123);
     box-shadow:inset 0px 0px 5px 1px rgb(190, 190, 190);
-    background: url('../assets/omega_img1.png') no-repeat center center / cover;
+    background: url('../assets/omega_img1.png') no-repeat center center / contain;
 }
 .omega .omega_box3{
     display: flex;
