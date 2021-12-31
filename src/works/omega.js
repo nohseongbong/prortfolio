@@ -17,7 +17,13 @@ import omega_mobile7 from '../assets/omega_mobile7.png'
 import omega_mobile8 from '../assets/omega_mobile8.png'
 
 
-import omega_img_m1 from '../assets/omega_img_m1.png'
+import html from '../assets/tool/html.png'
+import css from '../assets/tool/css.png'
+import js from '../assets/tool/js.png'
+import jquery from '../assets/tool/jquery.png'
+
+import vsc from '../assets/tool/vsc.png'
+import xd from '../assets/tool/xd.png'
 
 
 
@@ -104,6 +110,30 @@ const Omega = ({ page,cursorPointer }) => {
                     </div>
 
 
+                </section>
+
+
+
+                <section className="omega_method">
+                    <div className="method_box">
+                        <div className="language">
+                            <h2>Language</h2>
+                            <div className="img">
+                                <div><img src={html} /></div>
+                                <div><img src={css} /></div>
+                                <div><img src={js} /></div>
+                                <div><img src={jquery} /></div>
+                            </div>
+                        </div>
+                        <div className="tool">
+                            <h2>Tool</h2>
+                            <div className="img">
+                                <div><img src={vsc} /></div>
+                                <div><img src={xd} /></div>
+                            </div>
+                        </div>
+
+                    </div>
                 </section>
             </div>
         </div>

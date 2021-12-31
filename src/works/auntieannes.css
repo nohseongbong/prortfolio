@@ -189,7 +189,74 @@
 
 
 
+/* 툴 */
+
+.auntie .auntie_method{
+    width: 100%;
+    padding: 10% 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auntie .method_box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    flex-wrap: wrap;
+    gap:70px
+}
+
+.auntie .method_box > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 30px 0;
+}
+
+.auntie .method_box h2{
+    margin-bottom: 80px;
+    font-size: 3vw;
+    -webkit-text-stroke: 1px rgb(0, 0, 0);
+    color: #FFB500;
+}
+
+.auntie .method_box .img{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 4vw;
+
+}
+
+.auntie .method_box .img img{
+    width: 100px;
+}
+
+.auntie .method_box .img div{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
 @media screen and (max-width: 768px){
+
+    
+    /* 툴 */
+    .auntie .method_box h2{
+        font-size: 5vw;
+    }
+
+
     .auntie .auntie_banner{
         padding: 0 3%;
     }
