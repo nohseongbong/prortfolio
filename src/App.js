@@ -6,6 +6,7 @@ import Contact from './contact'
 import Omega from './works/omega'
 import AuntieAnnes from './works/auntieannes'
 import YoliJoliCook from './works/yolijolicook'
+import ThundeRing from './works/thunder'
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -257,6 +258,8 @@ function App() {
         <AuntieAnnes page={nowPage} cursorPointer={cursorPointer} />
         {/* 요리조리 쿡 */}
         <YoliJoliCook page={nowPage} cursorPointer={cursorPointer} />
+        {/* 썬더링 */}
+        <ThundeRing page={nowPage} cursorPointer={cursorPointer} />
 
         {/* 투두 todo list */}
         <Todo page={nowPage} /> 

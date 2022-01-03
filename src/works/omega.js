@@ -65,7 +65,6 @@ const Omega = ({ page,cursorPointer }) => {
                         <ul className="project_about">
                             <li><h3>TYPE</h3><span>web publishing & design</span></li>
                             <li><h3>YEAR</h3><span>2020</span></li>
-                            <li><h3>LANGUAGE</h3><span>html5 & css3 & jquery</span></li>
                             <li><h3>PROJECT</h3><span>OMEGA web renewal</span></li>
                             <li><h3>CONTRIBUTION</h3><span>100%</span></li>
                         </ul>

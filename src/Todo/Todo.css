@@ -14,7 +14,7 @@
     height: 100vh;
     padding: 0 60px;
     background-color: #fff;
-    transition: 1.2s;
+    /* transition: 1.2s; */
     position: absolute;
     /* bottom: -100%; */
     top: 0;
@@ -33,9 +33,10 @@
   
   /* 투두 리스트 */
   .todo_bg .todo_wrap{
-    width: 840px;
-    max-width: 840px;
-    max-height: 650px;
+    width: 100%;
+    min-height: 65vh;
+    max-width: 60vw;
+    max-height: 87vh;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0px 3px 8px 1px rgb(150, 150, 150);
@@ -130,7 +131,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 6%;
-    height: 65px;
+    height: 9vh;
     width: 100%;
     
     border-bottom: 2px solid #E7EBEE;
@@ -356,3 +357,22 @@
     color: #B3B7FF; 
   }
   
+
+  @media screen and (max-width: 768px){
+
+
+    /* 배경 */
+  .todo_bg{
+    padding: 0;
+  }
+    /* 투두 리스트 */
+    .todo_bg .todo_wrap{
+      width: 95%;
+      min-height: 70vh;
+      max-width: 840px;
+      max-height: 87vh;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0px 3px 8px 1px rgb(150, 150, 150);
+    }
+  }

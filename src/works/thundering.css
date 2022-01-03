@@ -1,4 +1,4 @@
-.auntie{
+.thunder{
     width: 100%;
     height: 100vh;
     background-color: rgb(255, 255, 255);
@@ -12,12 +12,12 @@
     position: fixed;
     top: 0;
 }
-.auntie.auntieOn{
+.thunder.thunderOn{
     opacity: 1;
     z-index: 1;
 }
 
-.auntie .auntie_content{
+.thunder .thunder_content{
     position: absolute;
     top: 0;
     width: 100%;
@@ -26,22 +26,22 @@
     flex-direction: column;
 }
 
-.auntie::-webkit-scrollbar {
+.thunder::-webkit-scrollbar {
     display: none;
 }
     
 
-.auntie .auntie_banner{
+.thunder .thunder_banner{
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 100px;
-    background: url('../assets/detail.auntie.png');
+    background: url('../assets/detail.thunder.png');
 }
 
-.auntie .auntie_banner .content2 {
+.thunder .thunder_banner .content2 {
     height: 80%;
     max-width: 100vw;
     width: 1040px;
@@ -50,16 +50,16 @@
     border-radius: 15px;
     background-position: center;
     box-shadow: 0px 5px 30px 3px rgb(10, 10, 10);
-    background-image: url('../assets/auntie_box.png');
+    background-image: url('../assets/thunder_box.png');
 }
 
-.auntie .btn2 {
+.thunder .btn2 {
     max-width: 100px;
     max-height: 100px;
     width: 10vw;
     height: 10vw;
     border-radius: 100px;
-    background-color: #FFB500;
+    background-color: #A4E22B;
     transition: 1.5s;
     display: flex;
     align-items: center;
@@ -76,7 +76,7 @@
     height: 50%;
 }
 
-.auntie .auntie_box1{
+.thunder .thunder_box1{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,7 +84,7 @@
 
 }
 
-.auntie .auntie_box1 > div{
+.thunder .thunder_box1 > div{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,14 +94,14 @@
     height: 100vh;
 }
 
-.auntie .number{
+.thunder .number{
     font-size: 12vw;
     font-style: oblique;
     -webkit-text-stroke: 2px rgb(0, 0, 0);
-    color: #FFB500;
+    color: #A4E22B;
 }
 
-.auntie .project_about{
+.thunder .project_about{
     width: 100%;
     display: flex;
     align-items: center;
@@ -109,27 +109,27 @@
     flex-wrap: wrap;
 }
 
-.auntie .project_about li{
+.thunder .project_about li{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.auntie .project_about li span{
+.thunder .project_about li span{
     margin: 10px 0;
     font-weight: 600;
     font-size: 1.5vw;
 }
 
-.auntie .project_about li h3{
+.thunder .project_about li h3{
     -webkit-text-stroke: 1px rgb(0, 0, 0);
-    color: #FFB500;
+    color: #A4E22B;
     font-size: 1.5vw;
 }
 
 
-.auntie .auntie_box2{
+.thunder .thunder_box2{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -138,9 +138,9 @@
     height: 37vw;
     background-color: rgb(170, 123, 123);
     box-shadow:inset 0px 0px 5px 1px rgb(190, 190, 190);
-    background: url('../assets/auntie_img1.png') no-repeat center center / contain;
+    background: url('../assets/thunder_img1.png') no-repeat center center / contain;
 }
-.auntie .auntie_box3{
+.thunder .thunder_box3{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -148,7 +148,7 @@
     flex-direction: column;
 }
 
-.auntie .auntie_box3 img{
+.thunder .thunder_box3 img{
     margin: 50px 0;
     max-width: 800px;
     width: 90%;
@@ -156,50 +156,48 @@
     box-shadow: 0px 2px 10px 1px rgb(190, 190, 190);
 }
 
-.auntie .auntie_box4 {
+.thunder .thunder_box4 {
     width: 100%;
     padding: 200px 0;
     background: #fcfcfc;
-    box-shadow:inset 0px 0px 5px 1px rgb(190, 190, 190);
 }
 
-.auntie .auntie_box4 > div{
+.thunder .thunder_box4 > div{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 90%;
     max-width: 1000px;
     margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 3vw;
 }
 
-.auntie .auntie_box4 > div > div{
-    display: flex;
-    justify-content: flex-start;
-}
 
-.auntie .auntie_box4 img {
+.thunder .thunder_box4 img {
     box-shadow: 0px 2px 20px 1px rgb(190, 190, 190);
     border-radius: 10px;
     max-width: 400px;
-    width: 40%;
+    width: 30%;
 }
 
-.auntie .auntie_box4 > div > div:nth-child(odd){
-    justify-content: flex-end;
-}
+
 
 
 
 /* 툴 */
 
-.auntie .auntie_method{
+.thunder .thunder_method{
     width: 100%;
     padding: 10% 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow:inset 0px 0px 5px 1px rgb(190, 190, 190);
+
 }
 
-.auntie .method_box{
+.thunder .method_box{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -208,7 +206,7 @@
     gap:70px
 }
 
-.auntie .method_box > div {
+.thunder .method_box > div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -217,14 +215,14 @@
     margin: 30px 0;
 }
 
-.auntie .method_box h2{
+.thunder .method_box h2{
     margin-bottom: 80px;
     font-size: 3vw;
     -webkit-text-stroke: 1px rgb(0, 0, 0);
-    color: #FFB500;
+    color: #A4E22B;
 }
 
-.auntie .method_box .img{
+.thunder .method_box .img{
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -233,11 +231,11 @@
 
 }
 
-.auntie .method_box .img img{
+.thunder .method_box .img img{
     width: 100px;
 }
 
-.auntie .method_box .img div{
+.thunder .method_box .img div{
     width: 100px;
     height: 100px;
     display: flex;
@@ -252,75 +250,51 @@
 
     
     /* 툴 */
-    .auntie .method_box h2{
+    .thunder .method_box h2{
         font-size: 5vw;
     }
 
 
-    .auntie .auntie_banner{
+    .thunder .thunder_banner{
         padding: 0 3%;
     }
 
-    
 
-    .auntie .auntie_box4 > div{
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .auntie .auntie_box4 > div > div {
-        justify-content: center;
-        width: 50%;
-    }
-
-    .auntie .auntie_box4 img {
-        width: 95%;
-        height: 95%;
-    }
-
-    .auntie .auntie_box4 {
-        padding: 50px 0;
-    }
-
-    .auntie .auntie_box4 > div > div:nth-child(odd){
-        justify-content: center;
-    }
-
-    .auntie .btn2 {
+    .thunder .btn2 {
         width: 15.5vw;
         height: 15.5vw;
         right: 3vw;
         top: 80vh;
     }
 
-    .auntie .project_about{
+    .thunder .project_about{
         justify-content: space-around;
     }
 
-    .auntie .project_about li{
+    .thunder .project_about li{
         width: 50%;
         height: 130px;
         text-align: center;
         justify-content: start;
     }
 
-    .auntie .project_about li span{
+    .thunder .project_about li span{
         font-size: 4vw;
     }
     
-    .auntie .project_about li h3{
+    .thunder .project_about li h3{
         font-size: 4vw;
     }
 
-    .auntie .auntie_box2{
+    .thunder .thunder_box2{
         height: 180vh;
-        background: url('../assets/auntie_img_m1.png') no-repeat center center / cover;
+        background: url('../assets/thunder_img_m1.png') no-repeat center center / cover;
     }
 }
 
 @media screen and (max-width: 468px){
-    .auntie .auntie_banner .content2 {
+    .thunder .thunder_banner .content2 {
         height: 90%;
-        background-image: url('../assets/auntie_box_m.png');
+        background-image: url('../assets/thunder_box_m.png');
     }
 }

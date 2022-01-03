@@ -185,21 +185,6 @@ function Todo({page}) {
     setProgress_list(falseList);
     setEnd_list(trueList);
 
-    // switch (type) {
-    //   case 'all':
-    //     setNowList(list);
-    //     setPageList(list);
-    //     break;
-    //   case 'progress':
-    //     setNowList(falseList);
-    //     setPageList(falseList);
-    //     break;
-    //   case 'end':
-    //     setNowList(trueList);
-    //     setPageList(trueList);
-    //     break;
-    // }
-
   }, [list])
 
 
