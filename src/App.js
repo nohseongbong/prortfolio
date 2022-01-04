@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Todo from './Todo/Todo.js'
 import Menu from './menu.js'
 import Contact from './contact'
+import About from './about'
 import Omega from './works/omega'
 import AuntieAnnes from './works/auntieannes'
 import YoliJoliCook from './works/yolijolicook'
@@ -260,12 +261,13 @@ function App() {
         <YoliJoliCook page={nowPage} cursorPointer={cursorPointer} />
         {/* 썬더링 */}
         <ThundeRing page={nowPage} cursorPointer={cursorPointer} />
-
         {/* 투두 todo list */}
         <Todo page={nowPage} /> 
       
         {/* 연락처 contack */}
         <Contact page={nowPage} cursorPointer={cursorPointer} />
+        {/* 어바웃 */}
+        <About page={nowPage} cursorPointer={cursorPointer} />
 
 
 
