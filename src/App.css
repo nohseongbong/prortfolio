@@ -209,6 +209,18 @@ height: 50px;
 
 @media screen and (max-width: 768px){
 
+  .main .inner {
+    /* width: 1300px; */
+    max-width: 100vw;
+    width: 95vw;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    }
+
 
   .main .inner .content{
     height: 90%;

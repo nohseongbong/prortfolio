@@ -263,6 +263,7 @@
     }
 
     .omega .omega_banner .content2 {
+        width: 95vw;
         height: 90%;
         background-image: url('../assets/omega_box_m.png');
     }

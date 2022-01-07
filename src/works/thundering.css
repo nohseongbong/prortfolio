@@ -290,6 +290,9 @@
         height: 180vh;
         background: url('../assets/thunder_img_m1.png') no-repeat center center / cover;
     }
+    .thunder .thunder_banner .content2 {
+        width: 95vw;
+    }
 }
 
 @media screen and (max-width: 468px){

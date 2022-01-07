@@ -6,12 +6,15 @@
     transition: 1.2s;
     z-index: -2;
     opacity: 0;
-    overflow-y: auto;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: #fff;
+    position: fixed;
+    top: 0;
+
 }
 
 .about::-webkit-scrollbar {
@@ -94,6 +97,7 @@
 .about .my_info h4{
     font-size: 2vw;
     font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .about .my_info span{
@@ -159,6 +163,7 @@
         justify-content: center;
         width: 100%;
         flex-wrap: nowrap;
+        height: auto;
     }
 
     .about .about_content1 .my_img{
@@ -180,8 +185,7 @@
 }
 
 @media screen and (max-width: 768px){
-    .about{
-    }
+
 }
 
 @media screen and (max-width: 468px){

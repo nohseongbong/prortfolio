@@ -213,6 +213,9 @@
 
 
 @media screen and (max-width: 768px){
+    .yolijoli .yolijoli_banner .content2 {
+        width: 95vw;
+    }
 
     /* 툴 */
     .yolijoli .method_box h2{
